@@ -130,7 +130,7 @@
 // Додайте перевірку, що функція отримує саме масив, і
 // якщо функція отримує масив - поверніть з функції найменше число,
 // в іншому випадку - поверніть 'Sory, it is not an array!'.
-// 
+//
 // const numbers = [2, 5, 35, 56, 12, 24, 7, 80, 3];
 //--------------------------------------------------
 // function findSmallestNumber(numbers){
@@ -304,19 +304,131 @@
 //--------------------------------------------------------------
 //=========================================================
 //------------------------11--------------------------------
-// 10. Створіть телефонну книгу - об'єкт phonebook, у якого є властивість contacts (список контактів)
+// Створіть телефонну книгу - об'єкт phonebook, у якого є властивість contacts (список контактів)
 // та методи управління книгою:
 // add(data) - приймає об'єкт data, де передається name і email, category може передаватись чи ні,
 // всередині метода add створіть обʼєкт newContact з властивостями  name, email, category, id, createdAt
-// (name i email - обов'язкові параметри, які треба передавати
-// при додаванні нового контакта,
-// category - може передаватись чи ні, якщо ні - має
-// приймати значення "default",
-// id та createdAt генеруються відповідними методами:
-// generateId() і getDate());
+// (name i email - обов'язкові параметри, які треба передавати при додаванні нового контакта,
+// category - може передаватись чи ні, якщо ні - має приймати значення "default",
+// id та createdAt генеруються відповідними методами: generateId() і getDate());
 // і додає newContact до списку контактів contacts;
 // *не забудьте додати перевірку, якщо контакт з таким ім'ям чи імейлом вже є - ми його не додаємо
+
 // list() - виводить список контактів у вигляді таблиці;
+
 // filtered(category) - фільтрує контактів по обраній категорії (друзі, робота і т.д.);
+
 // delete(name) - видаляє контакт з заданим ім'ям;
+
 // updateName(oldName, newName) - змінює ім'я контакта;
+// const phonebook = {
+//     contacts: [],
+//     add(data) {
+        
+//     },
+//     list() {
+        
+//     },
+//     filtered(category) {
+        
+//     },
+//     delete(name) {
+        
+//     },
+//     updateName(oldName, newName) {
+        
+//     },
+// }
+// const phonebook = {
+//   contacts: [],
+
+//   generateId() {
+//     return "#" + Math.random().toString(36).substring(2, 11); // Генерує унікальний ID
+//   },
+
+//   getDate() {
+//     return new Date().toString(); // Повертає поточну дату у форматі ISO
+//   },
+
+//   add(data) {
+//     const { name, email, category = "default" } = data;
+
+//     if (!name || !email) {
+//       console.log("Error: Name and email are required!");
+//       return;
+//     }
+
+//     // Перевіряємо, чи контакт уже існує
+//     const isExist = this.contacts.some(
+//       (contact) => contact.name === name || contact.email === email
+//     );
+
+//     if (isExist) {
+//       console.log("Error: Contact with this name or email already exists!");
+//       return;
+//     }
+
+//     const newContact = {
+//       id: this.generateId(),
+//       name,
+//       email,
+//       category,
+//       createdAt: this.getDate(),
+//     };
+
+//     this.contacts.push(newContact);
+//     console.log("Contact added successfully!", newContact);
+//   },
+
+//   list() {
+//     console.table(this.contacts);
+//   },
+
+//   filtered(category) {
+//     const filteredContacts = this.contacts.filter(
+//       (contact) => contact.category === category
+//     );
+
+//     if (filteredContacts.length === 0) {
+//       console.log(`No contacts found in category "${category}"`);
+//     } else {
+//       console.table(filteredContacts);
+//     }
+//   },
+
+//   delete(name) {
+//     const index = this.contacts.findIndex((contact) => contact.name === name);
+
+//     if (index !== -1) {
+//       const removed = this.contacts.splice(index, 1);
+//       console.log("Contact deleted successfully!", removed[0]);
+//     } else {
+//       console.log(`Error: Contact with name "${name}" not found!`);
+//     }
+//   },
+
+//   updateName(oldName, newName) {
+//     const contact = this.contacts.find((contact) => contact.name === oldName);
+
+//     if (!contact) {
+//       console.log(`Error: Contact with name "${oldName}" not found!`);
+//       return;
+//     }
+
+//     contact.name = newName;
+//     console.log(`Contact name updated from "${oldName}" to "${newName}"`);
+//   },
+// };
+
+// // Приклади використання:
+// phonebook.add({ name: "John Doe", email: "john@example.com", category: "friends" });
+// phonebook.add({ name: "Alice Smith", email: "alice@example.com", category: "work" });
+// phonebook.add({ name: "Bob Brown", email: "bob@example.com" });
+
+// phonebook.list(); // Виведе таблицю з контактами
+
+// phonebook.filtered("work"); // Відфільтрує контакти за категорією "work"
+
+// phonebook.delete("Alice Smith"); // Видалить контакт "Alice Smith"
+
+// phonebook.updateName("John Doe", "Johnny Doe"); // Оновить ім'я контакту
