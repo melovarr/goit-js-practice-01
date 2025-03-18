@@ -151,13 +151,13 @@ inputEl.addEventListener('input', () => {
 // 3 - При події `blur` зроби перевірку на пустоту поля інпута,
 // якщо ж поле пусте, то зроби `outline` => `'3px solid red'`, 
 // якщо при фокусі поле непусте, то `outline` => `'3px solid lime'`
-inputEl.addEventListener('blur', () => {
-    if(inputEl.value.trim() === ''){
-inputEl.style.outline = '3px solid red';
-    } else {
-        inputEl.style.outline = '3px solid green';
-    }
-})
+// inputEl.addEventListener('blur', () => {
+//     if(inputEl.value.trim() === ''){
+// inputEl.style.outline = '3px solid red';
+//     } else {
+//         inputEl.style.outline = '3px solid green';
+//     }
+// })
 // 4 - При події `submit`. Відміни поведінку браузера по змовчуванню.
 // Дістань данні з інпуту і чек боксу, зроби перевірку, 
 // що інпут не порожній, також, що нажатий чек бокс у положення true,
@@ -169,7 +169,19 @@ inputEl.style.outline = '3px solid red';
 // щоб на місце повернулось дефолтне знаяення "Anonymous".
 // При відправці форми, очисти інпут, верни чек бокс у положення 
 // false, верни дефолтне значення "Anonymous" у span.
-
+const form = document.querySelector(".js-contact-form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const inputValue = event.target.elements.userName.value.trim();
+    const check = event.target.elements.accept.checked;
+    if (inputValue === '' || !check){
+        alert('Fill all fields!');
+        return;
+    }
+    const data = {userName: inputValue};
+    console.log(data);
+    form.requestFullscreen();
+    })
 
 
 
